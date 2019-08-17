@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-16T08:57:37.854Z</updated>
+  <updated>2019-08-17T12:51:15.374Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>笔记2</title>
+    <link href="http://yoursite.com/2019/08/17/%E7%AC%94%E8%AE%B02/"/>
+    <id>http://yoursite.com/2019/08/17/笔记2/</id>
+    <published>2019-08-17T01:56:17.000Z</published>
+    <updated>2019-08-17T12:51:15.374Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-定位"><a href="#1-定位" class="headerlink" title="1.定位"></a>1.定位</h3><p>通过使用 <a href="https://www.w3school.com.cn/cssref/pr_class_position.asp" target="_blank" rel="noopener">position 属性</a>，我们可以选择 4 种不同类型的定位，这会影响元素框生成的方式。</p><h4 id="position-属性值的含义："><a href="#position-属性值的含义：" class="headerlink" title="position 属性值的含义："></a>position 属性值的含义：</h4><table><thead><tr><th>值</th><th>描述</th></tr></thead><tbody><tr><td>absolute</td><td>生成绝对定位的元素，相对于 static 定位以外的第一个祖先元素（离他最近的开启了定位的祖先元素）进行定位。元素框从文档流完全删除，并相对于其包含块定位。包含块可能是文档中的另一个元素或者是初始包含块。元素原先在正常文档流中所占的空间会关闭，就好像元素原来不存在一样。元素定位后生成一个块级框，而不论原来它在正常流中生成何种类型的框。 元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。</td></tr><tr><td>fixed</td><td>生成绝对定位的元素，相对于浏览器窗口进行定位。元素框的表现类似于将 position 设置为 absolute，不过其包含块是视窗本身。（会固定在浏览器窗口某个位置，不会随浏览器滚动条滚动）。 元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。</td></tr><tr><td>relative</td><td>生成相对定位的元素，相对于其正常位置进行定位。元素框偏移某个距离。元素仍保持其未定位前的形状，它原本所占的空间仍保留。相对定位会使元素提升一个层级。 因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。</td></tr><tr><td>static</td><td>默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。</td></tr></tbody></table><h3 id="2-层级"><a href="#2-层级" class="headerlink" title="2.层级"></a>2.层级</h3><p>如果定位元素层级一样，html中下边的元素会盖住上面的元素。</p><h4 id="z-index"><a href="#z-index" class="headerlink" title="z-index"></a>z-index</h4><p>通过z-index属性可以设置元素的层级，层级越高，显示离用户越近。（z-index 仅能在定位元素上奏效）</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1-定位&quot;&gt;&lt;a href=&quot;#1-定位&quot; class=&quot;headerlink&quot; title=&quot;1.定位&quot;&gt;&lt;/a&gt;1.定位&lt;/h3&gt;&lt;p&gt;通过使用 &lt;a href=&quot;https://www.w3school.com.cn/cssref/pr_class_posi
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>笔记1</title>
