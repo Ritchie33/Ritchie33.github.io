@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>git笔记 | Ritchie&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content>
+    <meta name="description" content="指定用户名和email地址12$ git config --global user.name &amp;quot;Your Name&amp;quot;$ git config --global user.email &amp;quot;email@example.com&amp;quot;  注：git config命令的--global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置。 创建版本库123$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git笔记">
+<meta property="og:url" content="http://yoursite.com/2019/08/30/git笔记/index.html">
+<meta property="og:site_name" content="Ritchie&#39;s blog">
+<meta property="og:description" content="指定用户名和email地址12$ git config --global user.name &amp;quot;Your Name&amp;quot;$ git config --global user.email &amp;quot;email@example.com&amp;quot;  注：git config命令的--global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置。 创建版本库123$">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.liaoxuefeng.com/files/attachments/919020037470528/0">
+<meta property="og:updated_time" content="2019-08-30T10:48:39.921Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git笔记">
+<meta name="twitter:description" content="指定用户名和email地址12$ git config --global user.name &amp;quot;Your Name&amp;quot;$ git config --global user.email &amp;quot;email@example.com&amp;quot;  注：git config命令的--global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置。 创建版本库123$">
+<meta name="twitter:image" content="https://www.liaoxuefeng.com/files/attachments/919020037470528/0">
+    
+        <link rel="alternate" type="application/atom+xml" title="Ritchie&#39;s blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ritchie</h5>
+          <a href="mailto:911970241@qq.com" title="911970241@qq.com" class="mail">911970241@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ritchie33" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/1934172281" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">git笔记</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">git笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-08-30T05:48:41.000Z" itemprop="datePublished" class="page-time">
+  2019-08-30
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#指定用户名和email地址"><span class="post-toc-number">1.</span> <span class="post-toc-text">指定用户名和email地址</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#创建版本库"><span class="post-toc-number">2.</span> <span class="post-toc-text">创建版本库</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#git-init命令可以把这个目录变成Git可以管理的仓库"><span class="post-toc-number">3.</span> <span class="post-toc-text">git init命令可以把这个目录变成Git可以管理的仓库</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#创建一个文件"><span class="post-toc-number">4.</span> <span class="post-toc-text">创建一个文件</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#把一个文件放到Git仓库需要两步。"><span class="post-toc-number">5.</span> <span class="post-toc-text">把一个文件放到Git仓库需要两步。</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#第一步，用命令git-add把文件添加到仓库："><span class="post-toc-number">6.</span> <span class="post-toc-text">第一步，用命令git add把文件添加到仓库：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#第二步，用命令git-commit把文件提交到仓库："><span class="post-toc-number">7.</span> <span class="post-toc-text">第二步，用命令git commit把文件提交到仓库：</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结1"><span class="post-toc-number"></span> <span class="post-toc-text">小结1</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#git-status命令告知我们仓库当前的状态"><span class="post-toc-number">1.</span> <span class="post-toc-text">git status命令告知我们仓库当前的状态</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#git-diff查看修改了什么内容，diff就是difference"><span class="post-toc-number">2.</span> <span class="post-toc-text">git diff查看修改了什么内容，diff就是difference</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结2"><span class="post-toc-number"></span> <span class="post-toc-text">小结2</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#用git-log命令查看历史记录-git-log命令从最近到最远显示"><span class="post-toc-number">1.</span> <span class="post-toc-text">用git log命令查看历史记录,git log命令从最近到最远显示</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#加上-pretty-oneline参数可以简化历史记录便于我们查看"><span class="post-toc-number">2.</span> <span class="post-toc-text">加上--pretty=oneline参数可以简化历史记录便于我们查看</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用git-reset命令返回到之前的版本"><span class="post-toc-number">3.</span> <span class="post-toc-text">使用git reset命令返回到之前的版本</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#git-reflog记录每一次命令"><span class="post-toc-number">4.</span> <span class="post-toc-text">git reflog记录每一次命令</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结3"><span class="post-toc-number"></span> <span class="post-toc-text">小结3</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#工作区"><span class="post-toc-number">1.</span> <span class="post-toc-text">工作区</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#版本库"><span class="post-toc-number">2.</span> <span class="post-toc-text">版本库</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#暂存区"><span class="post-toc-number">3.</span> <span class="post-toc-text">暂存区</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结4"><span class="post-toc-number"></span> <span class="post-toc-text">小结4</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#管理修改"><span class="post-toc-number">1.</span> <span class="post-toc-text">管理修改</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结5"><span class="post-toc-number"></span> <span class="post-toc-text">小结5</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#撤销修改"><span class="post-toc-number">1.</span> <span class="post-toc-text">撤销修改</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#小结6"><span class="post-toc-number"></span> <span class="post-toc-text">小结6</span></a>
+        </nav>
+    </aside>
+
+
+<article id="post-git笔记"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">git笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-08-30 13:48:41" datetime="2019-08-30T05:48:41.000Z"  itemprop="datePublished">2019-08-30</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h5 id="指定用户名和email地址"><a href="#指定用户名和email地址" class="headerlink" title="指定用户名和email地址"></a>指定用户名和email地址</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;Your Name&quot;</span><br><span class="line">$ git config --global user.email &quot;email@example.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>注：<code>git config</code>命令的<code>--global</code>参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置。</p>
+<h5 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir learngit</span><br><span class="line">$ cd learngit</span><br><span class="line">$ pwd</span><br></pre></td></tr></table></figure>
+
+<p>pwd命令用于显示当前目录。</p>
+<h5 id="git-init命令可以把这个目录变成Git可以管理的仓库"><a href="#git-init命令可以把这个目录变成Git可以管理的仓库" class="headerlink" title="git init命令可以把这个目录变成Git可以管理的仓库"></a><code>git init</code>命令可以把这个目录变成Git可以管理的仓库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+
+<h5 id="创建一个文件"><a href="#创建一个文件" class="headerlink" title="创建一个文件"></a>创建一个文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi readme.txt</span><br></pre></td></tr></table></figure>
+
+<h5 id="把一个文件放到Git仓库需要两步。"><a href="#把一个文件放到Git仓库需要两步。" class="headerlink" title="把一个文件放到Git仓库需要两步。"></a>把一个文件放到Git仓库需要两步。</h5><h5 id="第一步，用命令git-add把文件添加到仓库："><a href="#第一步，用命令git-add把文件添加到仓库：" class="headerlink" title="第一步，用命令git add把文件添加到仓库："></a>第一步，用命令<code>git add</code>把文件添加到仓库：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add readme.txt</span><br></pre></td></tr></table></figure>
+
+<h5 id="第二步，用命令git-commit把文件提交到仓库："><a href="#第二步，用命令git-commit把文件提交到仓库：" class="headerlink" title="第二步，用命令git commit把文件提交到仓库："></a>第二步，用命令<code>git commit</code>把文件提交到仓库：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;wrote a readme file&quot;</span><br></pre></td></tr></table></figure>
+
+<p><code>git commit</code>命令，<code>-m</code>后面输入这次提交的备注，比如做出了什么修改。</p>
+<h3 id="小结1"><a href="#小结1" class="headerlink" title="小结1"></a>小结1</h3><p>使用<code>git init</code>命令把这个目录变成Git可以管理的仓库。</p>
+<p>添加文件到Git仓库有两步：</p>
+<ol>
+<li><code>git add &lt;file&gt;</code></li>
+<li><code>git commit -m &lt;message&gt;</code></li>
+</ol>
+<hr>
+<h5 id="git-status命令告知我们仓库当前的状态"><a href="#git-status命令告知我们仓库当前的状态" class="headerlink" title="git status命令告知我们仓库当前的状态"></a><code>git status</code>命令告知我们仓库当前的状态</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
+
+<h5 id="git-diff查看修改了什么内容，diff就是difference"><a href="#git-diff查看修改了什么内容，diff就是difference" class="headerlink" title="git diff查看修改了什么内容，diff就是difference"></a><code>git diff</code>查看修改了什么内容，diff就是difference</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff readme.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="小结2"><a href="#小结2" class="headerlink" title="小结2"></a>小结2</h3><ul>
+<li>使用<code>git status</code>命令查看当前仓库的状态。</li>
+<li>如果<code>git status</code>告知文件被修改过，用<code>git diff</code>可以查看修改内容。</li>
+</ul>
+<hr>
+<h5 id="用git-log命令查看历史记录-git-log命令从最近到最远显示"><a href="#用git-log命令查看历史记录-git-log命令从最近到最远显示" class="headerlink" title="用git log命令查看历史记录,git log命令从最近到最远显示"></a>用<code>git log</code>命令查看历史记录,<code>git log</code>命令从最近到最远显示</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br></pre></td></tr></table></figure>
+
+<h5 id="加上-pretty-oneline参数可以简化历史记录便于我们查看"><a href="#加上-pretty-oneline参数可以简化历史记录便于我们查看" class="headerlink" title="加上--pretty=oneline参数可以简化历史记录便于我们查看"></a>加上<code>--pretty=oneline</code>参数可以简化历史记录便于我们查看</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log --pretty=oneline</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用git-reset命令返回到之前的版本"><a href="#使用git-reset命令返回到之前的版本" class="headerlink" title="使用git reset命令返回到之前的版本"></a>使用<code>git reset</code>命令返回到之前的版本</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
+
+<p><code>HEAD</code>表示当前版本，上一个版本就是<code>HEAD^</code>，前第100个版本写成<code>HEAD~100</code>。</p>
+<h5 id="git-reflog记录每一次命令"><a href="#git-reflog记录每一次命令" class="headerlink" title="git reflog记录每一次命令"></a><code>git reflog</code>记录每一次命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br></pre></td></tr></table></figure>
+
+<h3 id="小结3"><a href="#小结3" class="headerlink" title="小结3"></a>小结3</h3><ul>
+<li><code>HEAD</code>指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令<code>git reset --hard commit_id</code>。</li>
+<li>穿梭前，用<code>git log</code>可以查看提交历史，以便确定要回退到哪个版本。</li>
+<li>要重返未来，用<code>git reflog</code>查看命令历史，以便确定要回到未来的哪个版本。</li>
+</ul>
+<hr>
+<p>##### </p>
+<h5 id="工作区"><a href="#工作区" class="headerlink" title="工作区"></a><strong>工作区</strong></h5><p>就是在电脑中的目录，learngit文件夹就是一个工作区。</p>
+<h5 id="版本库"><a href="#版本库" class="headerlink" title="版本库"></a><strong>版本库</strong></h5><p>隐藏目录<code>.git</code>，是Git的版本库。</p>
+<h5 id="暂存区"><a href="#暂存区" class="headerlink" title="暂存区"></a>暂存区</h5><p>下图中的stage就是暂存区。</p>
+<p>前面把文件添加到Git的版本库中第一步是用<code>git add</code>命令，实际上就是把文件的修改添加到暂存区；第二步是用<code>git commit</code>命令，实际就是把暂存区里的所有内容全部提交到<code>master</code>分支。</p>
+<p>可以理解为文件修改全部放到暂存区，然后一次性提交暂存区的所有修改。</p>
+<p><img src="https://www.liaoxuefeng.com/files/attachments/919020037470528/0" alt="git-repo"></p>
+<h3 id="小结4"><a href="#小结4" class="headerlink" title="小结4"></a>小结4</h3><p><code>git add</code>命令实际上就是把要提交的所有修改放到暂存区，然后执行<code>git commit</code>就可以一次性把暂存区的所有修改提交到分支。</p>
+<hr>
+<h5 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h5><p>如果要提交两次或多次修改，可以先进行第一次修改，然后使用<code>git add</code>命令将第一次修改放到暂存区，然后再进行第二次修改，再使用<code>git add</code>命令将第二次修改放到暂存区，以此类推，最后使用<code>git commit</code>命令提交到分支。</p>
+<p>注：一定要将文件的修改<code>git add</code>后才可以使用<code>git commit</code>，因为<code>git commit</code>是将暂存区的文件修改提交到分支的，如果修改了文件但没有将文件修改使用<code>git add</code>添加到暂存区，则修改不会被提交到分支。</p>
+<h3 id="小结5"><a href="#小结5" class="headerlink" title="小结5"></a>小结5</h3><p>第一次修改 –&gt; git add –&gt; 第二次修改 –&gt; git add –&gt; … –&gt; git commit</p>
+<hr>
+<h5 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- readme.txt</span><br></pre></td></tr></table></figure>
+
+<p><code>git checkout --readme.txt</code>指的是把readme.txt文件在<strong>工作区</strong>的修改撤销。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD readme.txt</span><br></pre></td></tr></table></figure>
+
+<p><code>git reset HEAD readme.txt</code>指的是把readme.txt文件在<strong>暂存区</strong>的修改撤销。</p>
+<h3 id="小结6"><a href="#小结6" class="headerlink" title="小结6"></a>小结6</h3><ul>
+<li>如果对文件进行了修改还没有<code>git add</code>到暂存区，可以使用<code>git checkout --readme.txt</code>撤销工作区的修改。</li>
+<li>如果对文件进行了修改且<code>git add</code>到暂存区了，可以使用<code>git reset HEAD readme.txt</code>撤销暂存区的修改。</li>
+<li>如果对文件进行了修改<code>git add</code>到了暂存区，且使用<code>git commit</code>提交到了分支，可以使用<code>git reset</code>命令返回到之前的版本。</li>
+</ul>
+<hr>
+<p>详见：<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/896043488029600</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-08-30T10:48:39.921Z" itemprop="dateUpdated">2019-08-30 18:48:39</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/08/30/git笔记/" target="_blank" rel="external">http://yoursite.com/2019/08/30/git笔记/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Ritchie">
+            Ritchie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/08/30/git笔记/&title=《git笔记》 — Ritchie's blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/08/30/git笔记/&title=《git笔记》 — Ritchie's blog&source=Ritchie's blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/08/30/git笔记/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git笔记》 — Ritchie's blog&url=http://yoursite.com/2019/08/30/git笔记/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/08/30/git笔记/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/20/CSS-外边距重叠及防止方法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">CSS 外边距重叠及防止方法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Ritchie &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/08/30/git笔记/&title=《git笔记》 — Ritchie's blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/08/30/git笔记/&title=《git笔记》 — Ritchie's blog&source=Ritchie's blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/08/30/git笔记/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git笔记》 — Ritchie's blog&url=http://yoursite.com/2019/08/30/git笔记/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/08/30/git笔记/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/08/30/git笔记/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '常回来看看';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎回来';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
