@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>git笔记2 | Ritchie&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content>
+    <meta name="description" content="删除文件rm命令用于删除文件1$ rm test.txt  $ rm test.txt用于删除工作区中的文件 1$ git rm test.txt  $ git rm test.txt用于删除版本库中的文件 如果不小心删错了工作区中的文件，还可以用git checkout来恢复文件，git checkout就是将版本库中的版本拷贝到工作区中。 注：文件如果没有添加到版本库中就被删除则无法恢复。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git笔记2">
+<meta property="og:url" content="http://yoursite.com/2019/09/04/git笔记2/index.html">
+<meta property="og:site_name" content="Ritchie&#39;s blog">
+<meta property="og:description" content="删除文件rm命令用于删除文件1$ rm test.txt  $ rm test.txt用于删除工作区中的文件 1$ git rm test.txt  $ git rm test.txt用于删除版本库中的文件 如果不小心删错了工作区中的文件，还可以用git checkout来恢复文件，git checkout就是将版本库中的版本拷贝到工作区中。 注：文件如果没有添加到版本库中就被删除则无法恢复。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="c:/Users/91197/AppData/Roaming/Typora/typora-user-images/1567586338855.png">
+<meta property="og:image" content="c:/Users/91197/AppData/Roaming/Typora/typora-user-images/1567587299483.png">
+<meta property="og:image" content="c:/Users/91197/AppData/Roaming/Typora/typora-user-images/1567587382529.png">
+<meta property="og:image" content="c:/Users/91197/AppData/Roaming/Typora/typora-user-images/1567587437486.png">
+<meta property="og:image" content="c:/Users/91197/AppData/Roaming/Typora/typora-user-images/1567595003000.png">
+<meta property="og:updated_time" content="2019-09-04T11:46:52.624Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git笔记2">
+<meta name="twitter:description" content="删除文件rm命令用于删除文件1$ rm test.txt  $ rm test.txt用于删除工作区中的文件 1$ git rm test.txt  $ git rm test.txt用于删除版本库中的文件 如果不小心删错了工作区中的文件，还可以用git checkout来恢复文件，git checkout就是将版本库中的版本拷贝到工作区中。 注：文件如果没有添加到版本库中就被删除则无法恢复。">
+<meta name="twitter:image" content="c:/Users/91197/AppData/Roaming/Typora/typora-user-images/1567586338855.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Ritchie&#39;s blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ritchie</h5>
+          <a href="mailto:911970241@qq.com" title="911970241@qq.com" class="mail">911970241@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ritchie33" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/1934172281" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">git笔记2</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">git笔记2</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-09-04T01:01:57.000Z" itemprop="datePublished" class="page-time">
+  2019-09-04
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除文件"><span class="post-toc-number">1.</span> <span class="post-toc-text">删除文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#rm命令用于删除文件"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">rm命令用于删除文件</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加远程库"><span class="post-toc-number">2.</span> <span class="post-toc-text">添加远程库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#将远程库与本地关联"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">将远程库与本地关联</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#第一次把本地master分支的内容推送到远程"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">第一次把本地master分支的内容推送到远程</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#把本地master分支推送到远程"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">把本地master分支推送到远程</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#从远程库克隆"><span class="post-toc-number">3.</span> <span class="post-toc-text">从远程库克隆</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#把远程库克隆到本地"><span class="post-toc-number">3.0.1.</span> <span class="post-toc-text">把远程库克隆到本地</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建与合并分支"><span class="post-toc-number">4.</span> <span class="post-toc-text">创建与合并分支</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#创建并切换分支"><span class="post-toc-number">4.0.1.</span> <span class="post-toc-text">创建并切换分支</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#创建分支"><span class="post-toc-number">4.0.2.</span> <span class="post-toc-text">创建分支</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#切换分支"><span class="post-toc-number">4.0.3.</span> <span class="post-toc-text">切换分支</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查看当前分支"><span class="post-toc-number">4.0.4.</span> <span class="post-toc-text">查看当前分支</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#合并指定分支到当前分支"><span class="post-toc-number">4.0.5.</span> <span class="post-toc-text">合并指定分支到当前分支</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#删除分支"><span class="post-toc-number">4.0.6.</span> <span class="post-toc-text">删除分支</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解决冲突"><span class="post-toc-number">5.</span> <span class="post-toc-text">解决冲突</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查看分支合并图"><span class="post-toc-number">5.0.1.</span> <span class="post-toc-text">查看分支合并图</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分支管理策略"><span class="post-toc-number">6.</span> <span class="post-toc-text">分支管理策略</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#用no-fast-forward模式合并分支"><span class="post-toc-number">6.0.1.</span> <span class="post-toc-text">用no fast forward模式合并分支</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#分支策略"><span class="post-toc-number">6.0.2.</span> <span class="post-toc-text">分支策略</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Bug分支"><span class="post-toc-number">7.</span> <span class="post-toc-text">Bug分支</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#将当前工作现场储存"><span class="post-toc-number">7.0.1.</span> <span class="post-toc-text">将当前工作现场储存</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#回到工作现场并删除stash"><span class="post-toc-number">7.0.2.</span> <span class="post-toc-text">回到工作现场并删除stash</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#查看stash内容"><span class="post-toc-number">7.0.3.</span> <span class="post-toc-text">查看stash内容</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#复制某次特定的提交到当前分支"><span class="post-toc-number">7.0.4.</span> <span class="post-toc-text">复制某次特定的提交到当前分支</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Feature分支"><span class="post-toc-number">8.</span> <span class="post-toc-text">Feature分支</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#强行删除"><span class="post-toc-number">8.0.1.</span> <span class="post-toc-text">强行删除</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-git笔记2"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">git笔记2</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-09-04 09:01:57" datetime="2019-09-04T01:01:57.000Z"  itemprop="datePublished">2019-09-04</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><h5 id="rm命令用于删除文件"><a href="#rm命令用于删除文件" class="headerlink" title="rm命令用于删除文件"></a><code>rm</code>命令用于删除文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm test.txt</span><br></pre></td></tr></table></figure>
+
+<p><code>$ rm test.txt</code>用于删除工作区中的文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git rm test.txt</span><br></pre></td></tr></table></figure>
+
+<p><code>$ git rm test.txt</code>用于删除版本库中的文件</p>
+<p>如果不小心删错了工作区中的文件，还可以用<code>git checkout</code>来恢复文件，<code>git checkout</code>就是将版本库中的版本拷贝到工作区中。</p>
+<p>注：文件如果没有添加到版本库中就被删除则无法恢复。</p>
+<hr>
+<h3 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin git@github.com:ritchie33/learngit.git</span><br></pre></td></tr></table></figure>
+
+<h5 id="将远程库与本地关联"><a href="#将远程库与本地关联" class="headerlink" title="将远程库与本地关联"></a>将远程库与本地关联</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<h5 id="第一次把本地master分支的内容推送到远程"><a href="#第一次把本地master分支的内容推送到远程" class="headerlink" title="第一次把本地master分支的内容推送到远程"></a>第一次把本地master分支的内容推送到远程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+
+<h5 id="把本地master分支推送到远程"><a href="#把本地master分支推送到远程" class="headerlink" title="把本地master分支推送到远程"></a>把本地master分支推送到远程</h5><hr>
+<h3 id="从远程库克隆"><a href="#从远程库克隆" class="headerlink" title="从远程库克隆"></a>从远程库克隆</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@github.com:ritchie33/gitskills.git</span><br></pre></td></tr></table></figure>
+
+<h5 id="把远程库克隆到本地"><a href="#把远程库克隆到本地" class="headerlink" title="把远程库克隆到本地"></a>把远程库克隆到本地</h5><hr>
+<h3 id="创建与合并分支"><a href="#创建与合并分支" class="headerlink" title="创建与合并分支"></a>创建与合并分支</h3><h5 id="创建并切换分支"><a href="#创建并切换分支" class="headerlink" title="创建并切换分支"></a>创建并切换分支</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b 分支名</span><br></pre></td></tr></table></figure>
+
+<h5 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch 分支名</span><br></pre></td></tr></table></figure>
+
+<h5 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout 分支名</span><br></pre></td></tr></table></figure>
+
+<h5 id="查看当前分支"><a href="#查看当前分支" class="headerlink" title="查看当前分支"></a>查看当前分支</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch</span><br></pre></td></tr></table></figure>
+
+<h5 id="合并指定分支到当前分支"><a href="#合并指定分支到当前分支" class="headerlink" title="合并指定分支到当前分支"></a>合并指定分支到当前分支</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge 分支名</span><br></pre></td></tr></table></figure>
+
+<h5 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d 分支名</span><br></pre></td></tr></table></figure>
+
+<p>注：在一个分支上（图中的dev）做修改，只有add、commit之后这个分支才会像图里描述的那样前进一步，告诉Git新增了一个版本。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\91197\AppData\Roaming\Typora\typora-user-images\1567586338855.png" alt="1567586338855" title>
+                </div>
+                <div class="image-caption">1567586338855</div>
+            </figure>
+
+
+
+<hr>
+<h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><p>当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，解决冲突就是把Git合并失败的文件手动编辑为我们希望的内容，再提交，合并完成。</p>
+<h5 id="查看分支合并图"><a href="#查看分支合并图" class="headerlink" title="查看分支合并图"></a>查看分支合并图</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br></pre></td></tr></table></figure>
+
+<p><code>--pretty=oneline</code>：输出版本只显示一行</p>
+<p><code>--abbrev-commit</code>：版本号只显示前几个字符</p>
+<p>以下图片解释不同：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\91197\AppData\Roaming\Typora\typora-user-images\1567587299483.png" alt="1567587299483" title>
+                </div>
+                <div class="image-caption">1567587299483</div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\91197\AppData\Roaming\Typora\typora-user-images\1567587382529.png" alt="1567587382529" title>
+                </div>
+                <div class="image-caption">1567587382529</div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\91197\AppData\Roaming\Typora\typora-user-images\1567587437486.png" alt="1567587437486" title>
+                </div>
+                <div class="image-caption">1567587437486</div>
+            </figure>
+
+
+
+<hr>
+<h3 id="分支管理策略"><a href="#分支管理策略" class="headerlink" title="分支管理策略"></a>分支管理策略</h3><h5 id="用no-fast-forward模式合并分支"><a href="#用no-fast-forward模式合并分支" class="headerlink" title="用no fast forward模式合并分支"></a>用no fast forward模式合并分支</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git merge --no-ff -m &quot;merge with no-ff&quot; dev</span><br></pre></td></tr></table></figure>
+
+<p>合并分支时，加上<code>--no-ff</code>参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而<code>fast forward</code>合并就看不出来曾经做过合并。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\91197\AppData\Roaming\Typora\typora-user-images\1567595003000.png" alt="1567595003000" title>
+                </div>
+                <div class="image-caption">1567595003000</div>
+            </figure>
+
+
+
+<h5 id="分支策略"><a href="#分支策略" class="headerlink" title="分支策略"></a>分支策略</h5><p>一般情况下<code>master</code>分支都是用来发布新版本的，工作都在<code>dev</code>分支上，每个员工都有自己的分支，时不时往<code>dev</code>分支合并，最后要发布新版本时再将<code>dev</code>合并到<code>master</code>上，在<code>master</code>上发布新版本。</p>
+<hr>
+<h3 id="Bug分支"><a href="#Bug分支" class="headerlink" title="Bug分支"></a>Bug分支</h3><h5 id="将当前工作现场储存"><a href="#将当前工作现场储存" class="headerlink" title="将当前工作现场储存"></a>将当前工作现场储存</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash</span><br></pre></td></tr></table></figure>
+
+<h5 id="回到工作现场并删除stash"><a href="#回到工作现场并删除stash" class="headerlink" title="回到工作现场并删除stash"></a>回到工作现场并删除stash</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash pop</span><br></pre></td></tr></table></figure>
+
+<h5 id="查看stash内容"><a href="#查看stash内容" class="headerlink" title="查看stash内容"></a>查看stash内容</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git stash list</span><br></pre></td></tr></table></figure>
+
+<h5 id="复制某次特定的提交到当前分支"><a href="#复制某次特定的提交到当前分支" class="headerlink" title="复制某次特定的提交到当前分支"></a>复制某次特定的提交到当前分支</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git cherry-pick 版本号</span><br></pre></td></tr></table></figure>
+
+<p>用<code>git cherry-pick 版本号</code>命令，把bug提交的修改复制到当前分支，避免重复劳动。</p>
+<hr>
+<h3 id="Feature分支"><a href="#Feature分支" class="headerlink" title="Feature分支"></a>Feature分支</h3><p>开发一个新功能一般会新建一个<code>feature</code>分支，在<code>feature</code>分支上开发，开发完成后与<code>dev</code>分支合并，最后删除<code>feature</code>分支。</p>
+<h5 id="强行删除"><a href="#强行删除" class="headerlink" title="强行删除"></a>强行删除</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -D 分支名</span><br></pre></td></tr></table></figure>
+
+<p>如果要丢弃一个没有合并的分支，需要用<code>git branch -D 分支名</code>指令强行删除。</p>
+<hr>
+<p>详见：<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/896043488029600</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-04T11:46:52.624Z" itemprop="dateUpdated">2019-09-04 19:46:52</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2019/09/04/git笔记2/" target="_blank" rel="external">http://yoursite.com/2019/09/04/git笔记2/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Ritchie">
+            Ritchie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/09/04/git笔记2/&title=《git笔记2》 — Ritchie's blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/09/04/git笔记2/&title=《git笔记2》 — Ritchie's blog&source=Ritchie's blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/09/04/git笔记2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git笔记2》 — Ritchie's blog&url=http://yoursite.com/2019/09/04/git笔记2/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/09/04/git笔记2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/08/30/git笔记/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">git笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Ritchie &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/09/04/git笔记2/&title=《git笔记2》 — Ritchie's blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/09/04/git笔记2/&title=《git笔记2》 — Ritchie's blog&source=Ritchie's blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/09/04/git笔记2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《git笔记2》 — Ritchie's blog&url=http://yoursite.com/2019/09/04/git笔记2/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/09/04/git笔记2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2019/09/04/git笔记2/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '常回来看看';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎回来';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
