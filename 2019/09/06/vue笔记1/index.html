@@ -28,12 +28,15 @@
 <meta property="og:site_name" content="Ritchie&#39;s blog">
 <meta property="og:description" content="1.Vue简介vue是一个渐进式Javascript框架，可以自底向上逐层应用。 vue直接通过&amp;lt;script&amp;gt;标签进行引入，可以通过下载vue.js文件的方式引入或者直接引入CDN（如下）进行使用。 1&amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/vue&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;   2.创建第一个vue实">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="c:/Users/91197/Desktop/截图/1.png">
-<meta property="og:updated_time" content="2019-09-06T09:21:54.840Z">
+<meta property="og:image" content="d:/blog/themes/indigo/source/img/1.png">
+<meta property="og:image" content="c:/Users/91197/Desktop/截图/2.png">
+<meta property="og:image" content="c:%5CUsers%5C91197%5CDesktop%5C%E6%88%AA%E5%9B%BE%5C3.png">
+<meta property="og:image" content="c:/Users/91197/Desktop/截图/4.png">
+<meta property="og:updated_time" content="2020-03-05T16:08:32.796Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue笔记1">
 <meta name="twitter:description" content="1.Vue简介vue是一个渐进式Javascript框架，可以自底向上逐层应用。 vue直接通过&amp;lt;script&amp;gt;标签进行引入，可以通过下载vue.js文件的方式引入或者直接引入CDN（如下）进行使用。 1&amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/vue&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;   2.创建第一个vue实">
-<meta name="twitter:image" content="c:/Users/91197/Desktop/截图/1.png">
+<meta name="twitter:image" content="d:/blog/themes/indigo/source/img/1.png">
     
         <link rel="alternate" type="application/atom+xml" title="Ritchie&#39;s blog" href="/atom.xml">
     
@@ -173,7 +176,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-Vue简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.Vue简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-创建第一个vue实例"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.创建第一个vue实例</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-Vue简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.Vue简介</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-创建第一个vue实例"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.创建第一个vue实例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-Vue实例中的数据，事件和方法"><span class="post-toc-number">3.</span> <span class="post-toc-text">3.Vue实例中的数据，事件和方法</span></a></li></ol>
         </nav>
     </aside>
 
@@ -205,9 +208,40 @@
 <h3 id="2-创建第一个vue实例"><a href="#2-创建第一个vue实例" class="headerlink" title="2.创建第一个vue实例"></a>2.创建第一个vue实例</h3><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="C:\Users\91197\Desktop\截图\1.png" alt="1" title>
+                    <img src="D:\blog\themes\indigo\source\img\1.png" alt="1" title>
                 </div>
                 <div class="image-caption">1</div>
+            </figure>
+
+<p>直接通过new Vue()创建一个vue的实例，可以传递一个参数{}给这个实例。</p>
+<ul>
+<li><p><strong>双括号</strong>：插值表达式</p>
+</li>
+<li><p><strong>挂载点</strong>：vue中的<code>el</code>（element）指向</p><p>标签的id，图中</p><p>标签就叫做vue的挂载点。vue只会处理挂载点中的内容。</p>
+</li>
+<li><p><strong>模板</strong>：模板指的就是挂载点内部的内容，可以写在挂载点内部，也可以写在vue中的<code>template</code>属性中。</p>
+</li>
+</ul>
+<hr>
+<h3 id="3-Vue实例中的数据，事件和方法"><a href="#3-Vue实例中的数据，事件和方法" class="headerlink" title="3.Vue实例中的数据，事件和方法"></a>3.Vue实例中的数据，事件和方法</h3><p>下图中vue的指令v-text和v-html可以把content变量通过文本和html的不同方式显示。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\91197\Desktop\截图\2.png" alt="2" title>
+                </div>
+                <div class="image-caption">2</div>
+            </figure>
+
+
+
+<p><img src="C:%5CUsers%5C91197%5CDesktop%5C%E6%88%AA%E5%9B%BE%5C3.png" alt="3"></p>
+<p><code>v-on</code>该模板指令表示要绑定一个事件，下图中绑定的是click事件，该事件触发的时候调用了一个函数，这个函数要写在Vue实例中的methods对象中，点击Hello World后变成Vue。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\91197\Desktop\截图\4.png" alt="4" title>
+                </div>
+                <div class="image-caption">4</div>
             </figure>
         </div>
 
@@ -216,7 +250,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-09-06T09:21:54.840Z" itemprop="dateUpdated">2019-09-06 17:21:54</time>
+    最后更新时间：<time datetime="2020-03-05T16:08:32.796Z" itemprop="dateUpdated">2020-03-06 00:08:32</time>
 </span><br>
 
 
@@ -295,7 +329,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/03/06/React/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">React</h4>
+      </a>
+    </div>
   
 
   
@@ -384,7 +425,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>Ritchie &copy; 2015 - 2019</span>
+        <p><span>Ritchie &copy; 2015 - 2020</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>

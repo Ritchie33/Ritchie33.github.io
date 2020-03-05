@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Mongoose | Ritchie&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content>
+    <meta name="description" content="1.MongoDB 数据库的基本概念 可以有多个数据库 一个数据库中可以有多个集合 一个集合中可以有多个文档 文档结构很灵活，没有任何限制 MongoDB 非常灵活 当你需要插入数据的时候，只需要指定往哪个数据库的哪个集合操作就可以了 一切都由MongoDB来自动完成建库建表这件事    12345678910111213141516171819202122232425262728&amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mongoose">
+<meta property="og:url" content="http://yoursite.com/2020/03/06/mongoose笔记/index.html">
+<meta property="og:site_name" content="Ritchie&#39;s blog">
+<meta property="og:description" content="1.MongoDB 数据库的基本概念 可以有多个数据库 一个数据库中可以有多个集合 一个集合中可以有多个文档 文档结构很灵活，没有任何限制 MongoDB 非常灵活 当你需要插入数据的时候，只需要指定往哪个数据库的哪个集合操作就可以了 一切都由MongoDB来自动完成建库建表这件事    12345678910111213141516171819202122232425262728&amp;#123;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-05T16:13:22.027Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mongoose">
+<meta name="twitter:description" content="1.MongoDB 数据库的基本概念 可以有多个数据库 一个数据库中可以有多个集合 一个集合中可以有多个文档 文档结构很灵活，没有任何限制 MongoDB 非常灵活 当你需要插入数据的时候，只需要指定往哪个数据库的哪个集合操作就可以了 一切都由MongoDB来自动完成建库建表这件事    12345678910111213141516171819202122232425262728&amp;#123;">
+    
+        <link rel="alternate" type="application/atom+xml" title="Ritchie&#39;s blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Ritchie</h5>
+          <a href="mailto:911970241@qq.com" title="911970241@qq.com" class="mail">911970241@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ritchie33" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/1934172281" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Mongoose</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Mongoose</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-03-06T01:01:59.000Z" itemprop="datePublished" class="page-time">
+  2020-03-06
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-MongoDB-数据库的基本概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.MongoDB 数据库的基本概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-起步"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.起步</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-官方指南"><span class="post-toc-number">3.</span> <span class="post-toc-text">3.官方指南</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-设计-Schema-发布-Model"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">3.1. 设计 Schema 发布 Model</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-增加数据"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">3.2. 增加数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3-查询"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">3.3. 查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-4-更新数据"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">3.4. 更新数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-5-删除数据"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">3.5. 删除数据</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-mongoose笔记"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Mongoose</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-03-06 09:01:59" datetime="2020-03-06T01:01:59.000Z"  itemprop="datePublished">2020-03-06</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="1-MongoDB-数据库的基本概念"><a href="#1-MongoDB-数据库的基本概念" class="headerlink" title="1.MongoDB 数据库的基本概念"></a>1.<code>MongoDB</code> 数据库的基本概念</h2><ul>
+<li>可以有多个数据库</li>
+<li>一个数据库中可以有多个集合</li>
+<li>一个集合中可以有多个文档</li>
+<li>文档结构很灵活，没有任何限制</li>
+<li><code>MongoDB</code> 非常灵活<ul>
+<li>当你需要插入数据的时候，只需要指定往哪个数据库的哪个集合操作就可以了</li>
+<li>一切都由<code>MongoDB</code>来自动完成建库建表这件事</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//qq数据库</span></span><br><span class="line">    qq:&#123;</span><br><span class="line">        <span class="comment">//qq数据库中的users集合</span></span><br><span class="line">        users: [</span><br><span class="line">            <span class="comment">//users集合中的文档</span></span><br><span class="line">            &#123;<span class="attr">name</span>: <span class="string">'ritchie'</span>, <span class="attr">age</span>: <span class="number">23</span>&#125;,</span><br><span class="line">            &#123;<span class="attr">name</span>: <span class="string">'孔祥姗'</span>, <span class="attr">age</span>: <span class="number">3</span>&#125;,</span><br><span class="line">            &#123;<span class="attr">name</span>: <span class="string">'王琦'</span>, <span class="attr">age</span>: <span class="number">23</span>&#125;，</span><br><span class="line">            ...</span><br><span class="line">        ],</span><br><span class="line">        <span class="comment">//qq数据库中的products集合</span></span><br><span class="line">        products:[</span><br><span class="line">            ...</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//淘宝数据库</span></span><br><span class="line">    taobao:&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//百度数据库</span></span><br><span class="line">    baidu:&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-起步"><a href="#2-起步" class="headerlink" title="2.起步"></a>2.起步</h2><p>安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i mongoose</span><br></pre></td></tr></table></figure>
+
+<p>hello world:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>)</span><br><span class="line">mongoose.connect(<span class="string">'mongodb://localhost/test'</span>,&#123; <span class="attr">useMongoClient</span>: <span class="literal">true</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Cat = mongoose.model(<span class="string">'Cat'</span>,&#123; <span class="attr">name</span>:<span class="built_in">String</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> kitty = <span class="keyword">new</span> Cat(&#123; <span class="attr">name</span>: <span class="string">'kxs'</span> &#125;)</span><br><span class="line">kitty.save(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'喵喵喵'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-官方指南"><a href="#3-官方指南" class="headerlink" title="3.官方指南"></a>3.官方指南</h2><h3 id="3-1-设计-Schema-发布-Model"><a href="#3-1-设计-Schema-发布-Model" class="headerlink" title="3.1. 设计 Schema 发布 Model"></a>3.1. 设计 Schema 发布 Model</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1.连接数据库</span></span><br><span class="line"><span class="comment">// 指定连接的数据库不需要存在，当你插入第一条数据之后就会自动被创建出来</span></span><br><span class="line">mongoose.connect(<span class="string">'mongoose://localhost/itcast'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Schema = mongoose.Schema</span><br><span class="line"><span class="comment">// 2.设计文档结构</span></span><br><span class="line"><span class="comment">// 字段名称就是表结构中的属性名称</span></span><br><span class="line"><span class="comment">// 约束的目的是为了保证数据的完整性，不要有脏数据</span></span><br><span class="line"><span class="keyword">var</span> userSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">    username: &#123;</span><br><span class="line">        type: <span class="built_in">String</span>,</span><br><span class="line">        <span class="built_in">require</span>: <span class="literal">true</span> <span class="comment">//必须有</span></span><br><span class="line">    &#125;,</span><br><span class="line">    password: &#123;</span><br><span class="line">        type: <span class="built_in">String</span>,</span><br><span class="line">        <span class="built_in">require</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    email: &#123;</span><br><span class="line">        type: <span class="built_in">String</span></span><br><span class="line">        <span class="keyword">default</span>: <span class="string">'xxx@qq.com'</span> <span class="comment">//默认值</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.将文档结构发布为模型</span></span><br><span class="line"><span class="comment">// mongoose.model 方法就是用来将一个架构发布为 model</span></span><br><span class="line"><span class="comment">// 第一个参数：传入一个大写名词单数字符串用来表示你的数据库名称、</span></span><br><span class="line"><span class="comment">//			mongoose会自动将大写名词的字符串生成小写复数的集合名称</span></span><br><span class="line"><span class="comment">//			例如这里的User最终会变成users集合名称</span></span><br><span class="line"><span class="comment">// 第二个参数：架构Schema</span></span><br><span class="line"><span class="keyword">var</span> User = mongoose.model(<span class="string">'User'</span>, userSchema)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 4.当我们有了模型构造函数之后，就可以使用这个构造函数对users集合中的数据为所欲为了（增删改查）</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-增加数据"><a href="#3-2-增加数据" class="headerlink" title="3.2. 增加数据"></a>3.2. 增加数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> admin = <span class="keyword">new</span> User(&#123;</span><br><span class="line">    username: <span class="string">'admin'</span>,</span><br><span class="line">    password: <span class="string">'123456'</span>,</span><br><span class="line">    email: <span class="string">'admin@admin.com'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">admin.save(<span class="function"><span class="keyword">function</span> (<span class="params">err, ret</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'保存失败'</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'保存成功'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-查询"><a href="#3-3-查询" class="headerlink" title="3.3. 查询"></a>3.3. 查询</h3><p>查询所有：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">User.find(<span class="function"><span class="keyword">function</span> (<span class="params">err, ret</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'查询失败'</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(ret)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>按条件查询所有：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">User.find(&#123;</span><br><span class="line">   username: <span class="string">'zs'</span> </span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, ret</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'查询失败'</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(ret)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>按条件查询单个：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">User.findOne(&#123;</span><br><span class="line">   username: <span class="string">'zs'</span> </span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, ret</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'查询失败'</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(ret)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-更新数据"><a href="#3-4-更新数据" class="headerlink" title="3.4. 更新数据"></a>3.4. 更新数据</h3><p>根据条件更新所有：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Model.update(conditions, docs, options, callback)</span><br><span class="line"><span class="comment">//conditions	条件</span></span><br><span class="line"><span class="comment">//docs			更新的内容</span></span><br></pre></td></tr></table></figure>
+
+<p>根据指定条件更新一个：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Model.findOneAndUpdate(conditions, docs, options, callback)</span><br></pre></td></tr></table></figure>
+
+<p>根据id更新一个：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">User.findByIdAndUpdate(<span class="string">'5a001b23d219eb00c8581186'</span>, &#123;</span><br><span class="line">   username: <span class="string">'zs'</span> </span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, ret</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'更新失败'</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'更新成功'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5-删除数据"><a href="#3-5-删除数据" class="headerlink" title="3.5. 删除数据"></a>3.5. 删除数据</h3><p>根据条件删除所有：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">User.remove(&#123;</span><br><span class="line">   username: <span class="string">'zs'</span> </span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, ret</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'删除失败'</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'删除成功'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>根据条件删除一个：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Model.findOneAndRemove(conditions, options, callback)</span><br></pre></td></tr></table></figure>
+
+<p>根据id删除一个：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Model.findByIdAndRemove(id, options, callback)</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-03-05T16:13:22.027Z" itemprop="dateUpdated">2020-03-06 00:13:22</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/03/06/mongoose笔记/" target="_blank" rel="external">http://yoursite.com/2020/03/06/mongoose笔记/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Ritchie">
+            Ritchie
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/03/06/mongoose笔记/&title=《Mongoose》 — Ritchie's blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/03/06/mongoose笔记/&title=《Mongoose》 — Ritchie's blog&source=Ritchie's blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/03/06/mongoose笔记/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Mongoose》 — Ritchie's blog&url=http://yoursite.com/2020/03/06/mongoose笔记/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/03/06/mongoose笔记/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/03/06/Express/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Express</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Ritchie &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/03/06/mongoose笔记/&title=《Mongoose》 — Ritchie's blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/03/06/mongoose笔记/&title=《Mongoose》 — Ritchie's blog&source=Ritchie's blog" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/03/06/mongoose笔记/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Mongoose》 — Ritchie's blog&url=http://yoursite.com/2020/03/06/mongoose笔记/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/03/06/mongoose笔记/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/03/06/mongoose笔记/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '常回来看看';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎回来';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
